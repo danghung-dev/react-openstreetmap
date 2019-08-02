@@ -1,7 +1,5 @@
 # React leaflet-routing-machine example
 
-[![N|Screensghot](https://lh3.googleusercontent.com/-hIq62YGFGng/XNUI-khVIII/AAAAAAAAL5c/RnH9jJDCeeQKEMKN8VJs1kaCZ76P2yP7wCK8BGAs/s0/FireShot%2BCapture%2B001%2B-%2BReact%2BApp%2B-%2Blocalhost.png)](https://lh3.googleusercontent.com/-hIq62YGFGng/XNUI-khVIII/AAAAAAAAL5c/RnH9jJDCeeQKEMKN8VJs1kaCZ76P2yP7wCK8BGAs/s0/FireShot%2BCapture%2B001%2B-%2BReact%2BApp%2B-%2Blocalhost.png)
-
 ### 1. Dependencies
 
 ```js

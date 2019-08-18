@@ -32,7 +32,7 @@ podTemplate(label: 'mypod', containers: [
           container('kubectl') {
             sh """
             kubectl apply -f deploy.yml
-            kubectl patch deployment react-map -p "{"spec":{"template":{"metadata":{"labels":{"date":"`date +'%s'`"}}}}}" -n jenkins
+            kubectl patch deployment react-map -p "{\\\"spec\\\":{\\\"template\\\":{\\\"metadata\\\":{\\\"labels\\\":{\\\"date\\\":\\\"`date +'%s'`\\\"}}}}}" -n jenkins
             kubectl rollout status deployment react-map
             """
           }

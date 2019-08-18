@@ -12,7 +12,7 @@ class Routing extends MapLayer {
       language: 'vi',
       useHints: false,
     })
-    const waypoints = [L.latLng(10.7979794, 106.6538054), L.latLng(10.8019022, 106.677889)]
+    const waypoints = [L.latLng(10.7979794, 106.6538054), L.latLng(10.831332788572645, 106.7638224363)]
     var markerList = ['assets/marker-start-icon-2x.png', 'assets/marker-end-icon-2x.png', 'assets/marker-via-icon-2x.png'];
     const startIcon = L.icon({
       iconUrl: markerList[0],
@@ -36,14 +36,6 @@ class Routing extends MapLayer {
       router,
       fitSelectedRoutes: false,
       collapsible: true,
-      // summaryTemplate: '<div class="osrm-directions-summary"><h2>{name}</h2><h3>{distance}, {time}</h3></div>',
-      containerClassName: 'dark pad2',
-      // alternativeClassName: 'osrm-directions-instructions',
-      // stepClassName: 'osrm-directions-step',
-      geocodersClassName: 'osrm-directions-inputs',
-      showAlternatives: false,
-      useZoomParameter: false,
-      routeDragInterval: 200,
       plan: L.Routing.plan(waypoints, {
         createMarker: function(i, wp, n) {
           if (i ===0) {

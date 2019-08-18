@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mapbox/corslite": "^0.0.7",
+    "@mapbox/polyline": "^1.1.0",
     "leaflet": "^1.5.1",
-    "leaflet-routing-machine": "^3.2.12",
+    "leaflet-control-geocoder": "^1.8.3",
+    "osrm-text-instructions": "^0.13.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-leaflet": "^2.4.0",

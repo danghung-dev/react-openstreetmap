@@ -1,13 +1,14 @@
 import { MapLayer } from "react-leaflet";
 import L from "leaflet";
-import "leaflet-routing-machine";
+import "../lrm";
 import { withLeaflet } from "react-leaflet";
+import Geocoder from 'leaflet-control-geocoder'
 
 class Routing extends MapLayer {
   createLeafletElement() {
     const { map } = this.props;
     const router =   L.Routing.osrmv1({
-      serviceUrl: 'http://192.168.10.251:5000/route/v1',
+      serviceUrl: 'https://openst.danghung.xyz/route/v1',
       language: 'vi',
       useHints: false,
     })
@@ -30,8 +31,19 @@ class Routing extends MapLayer {
     });
     let leafletElement = L.Routing.control({
       waypoints,
+      geocoder: Geocoder.nominatim(),
+      routeWhileDragging: true,
       router,
       fitSelectedRoutes: false,
+      collapsible: true,
+      // summaryTemplate: '<div class="osrm-directions-summary"><h2>{name}</h2><h3>{distance}, {time}</h3></div>',
+      containerClassName: 'dark pad2',
+      // alternativeClassName: 'osrm-directions-instructions',
+      // stepClassName: 'osrm-directions-step',
+      geocodersClassName: 'osrm-directions-inputs',
+      showAlternatives: false,
+      useZoomParameter: false,
+      routeDragInterval: 200,
       plan: L.Routing.plan(waypoints, {
         createMarker: function(i, wp, n) {
           if (i ===0) {

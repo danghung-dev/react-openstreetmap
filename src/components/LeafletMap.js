@@ -35,7 +35,7 @@ export default class LeafletMap extends Component {
     ) : null
     return (
       <div>
-         <div className="big-container">
+        <div className="big-container">
           <input className="from" placeholder="From" type="text" name="from" onChange={this.handleChange} />
           <br/>
           <input className="to" placeholder="To" type="text" name="to" onChange={this.handleChange} />

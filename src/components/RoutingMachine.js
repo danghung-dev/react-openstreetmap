@@ -5,6 +5,9 @@ import { withLeaflet } from "react-leaflet";
 import Geocoder from 'leaflet-control-geocoder'
 
 class Routing extends MapLayer {
+  updateLeafletElement(prevProps, props) {
+    this.leafletElement.setWaypoints(props.waypoints)
+  }
   createLeafletElement() {
     const { map, waypoints } = this.props;
     const router =   L.Routing.osrmv1({
@@ -59,6 +62,7 @@ class Routing extends MapLayer {
         routeWhileDragging: true
       })
     }).addTo(map.leafletElement);
+    this.leafletElement = leafletElement;
     return leafletElement.getPlan();
   }
 }

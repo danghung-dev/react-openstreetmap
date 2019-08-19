@@ -19,7 +19,6 @@ export default class LeafletMap extends Component {
     });
   };
   handleChange = ({ target }) => {
-    // console.log('event', target, target.name, target.value)
     this.setState({[target.name]: target.value});
   }
   getLatLng = (s) => {
@@ -31,6 +30,9 @@ export default class LeafletMap extends Component {
     const from = this.getLatLng(this.state.from);
     const to = this.getLatLng(this.state.to)
     const waypoints = [L.latLng(from), L.latLng(to)]
+    const routing = this.state.isMapInit ? (
+      <Routing map={this.map} waypoints={waypoints} />
+    ) : null
     return (
       <div>
         <form>
@@ -49,7 +51,7 @@ export default class LeafletMap extends Component {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="http://kb-openst.danghung.xyz:6789/openstreetmap-carto/tile/{z}/{x}/{y}.png"
         />
-        {this.state.isMapInit && <Routing map={this.map} waypoints={waypoints} />}
+        {routing}
       </Map>
       </div>
     );

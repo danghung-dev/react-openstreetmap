@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Map, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import Routing from "./RoutingMachine";
-
+import './index.css'
 export default class LeafletMap extends Component {
   state = {
     lat: 10.7979794,
@@ -35,17 +35,11 @@ export default class LeafletMap extends Component {
     ) : null
     return (
       <div>
-        <form>
-        <label>
-          from:
-          <input type="text" name="from" onChange={this.handleChange} />
-        </label>
-        <br />
-        <label>
-          to:
-          <input type="text" name="to" onChange={this.handleChange} />
-        </label>
-        </form>
+        <div className="big-container">
+          <input className="from" placeholder="From" type="text" name="from" onChange={this.handleChange} />
+          <br/>
+          <input className="to" placeholder="To" type="text" name="to" onChange={this.handleChange} />
+        </div>
       <Map center={position} zoom={this.state.zoom} ref={this.saveMap}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

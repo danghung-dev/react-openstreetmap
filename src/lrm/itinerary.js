@@ -16,7 +16,7 @@
 				opacity: 1,
 				fillOpacity: 0.7
 			},
-			summaryTemplate: '<h3>{distance}, {time}</h3>',
+			summaryTemplate: '<h3>Khoảng cách: {distance}<br>Thời gian: {time}</h3>',
 			timeTemplate: '{time}',
 			containerClassName: '',
 			alternativeClassName: '',

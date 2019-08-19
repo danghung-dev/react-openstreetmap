@@ -220,7 +220,7 @@
 
 		_hookEvents: function(l) {
 			l.on('linetouched', function(e) {
-				this._plan.dragNewWaypoint(e);
+				// this._plan.dragNewWaypoint(e);
 			}, this);
 		},
 

@@ -1,0 +1,25 @@
+
+.big-container{
+    width: 300px;
+    height: 60px; 
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px; 
+  }
+.big-container .from{
+    width: 300px; 
+    height: 25px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.big-container .to{
+    width: 300px; 
+    height: 25px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top:5px;
+}

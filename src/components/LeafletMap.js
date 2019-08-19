@@ -38,7 +38,7 @@ export default class LeafletMap extends Component {
          <div className="big-container">
           <input className="from" placeholder="From" type="text" name="from" onChange={this.handleChange} />
        <br/>
-        <input className="to" placeholder="To" type="text" name="to" onChange={this.handleChange} />
+          <input className="to" placeholder="To" type="text" name="to" onChange={this.handleChange} />
         </div>
       <Map center={position} zoom={this.state.zoom} ref={this.saveMap}>
         <TileLayer

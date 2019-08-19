@@ -6,13 +6,13 @@ import Geocoder from 'leaflet-control-geocoder'
 
 class Routing extends MapLayer {
   createLeafletElement() {
-    const { map } = this.props;
+    const { map, waypoints } = this.props;
     const router =   L.Routing.osrmv1({
       serviceUrl: 'https://openst.danghung.xyz/route/v1',
       language: 'vi',
       useHints: false,
     })
-    const waypoints = [L.latLng(10.7979794, 106.6538054), L.latLng(10.831332788572645, 106.7638224363)]
+    // const waypoints = [L.latLng(10.7979794, 106.6538054), L.latLng(10.831332788572645, 106.7638224363)]
     var markerList = ['assets/marker-start-icon-2x.png', 'assets/marker-end-icon-2x.png', 'assets/marker-via-icon-2x.png'];
     const startIcon = L.icon({
       iconUrl: markerList[0],

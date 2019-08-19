@@ -905,13 +905,9 @@
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/yargs" "^12.0.9"
 
-"@mapbox/corslite@0.0.7", "@mapbox/corslite@^0.0.7":
+"@mapbox/corslite@^0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@mapbox/corslite/-/corslite-0.0.7.tgz#29f5b6a188ba946e514bdf0b6401ed4fbe13a39e"
-
-"@mapbox/polyline@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/polyline/-/polyline-0.2.0.tgz#6e25980744aa22331f94b645a542c02d3fcfee97"
 
 "@mapbox/polyline@^1.1.0":
   version "1.1.0"
@@ -5053,14 +5049,6 @@ leaflet-control-geocoder@^1.8.3:
   optionalDependencies:
     open-location-code "^1.0.0"
 
-"leaflet-routing-machine@github:danghung-dev/leaflet-routing-machine":
-  version "3.2.12"
-  resolved "https://codeload.github.com/danghung-dev/leaflet-routing-machine/tar.gz/7de54758767e78c37f48348bc3ccde21676b7fcb"
-  dependencies:
-    "@mapbox/corslite" "0.0.7"
-    "@mapbox/polyline" "^0.2.0"
-    osrm-text-instructions "^0.13.2"
-
 leaflet@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.5.1.tgz#9afb9d963d66c870066b1342e7a06f92840f46bf"
@@ -5860,7 +5848,7 @@ osenv@^0.1.4:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-osrm-text-instructions@^0.13.2, osrm-text-instructions@^0.13.3:
+osrm-text-instructions@^0.13.3:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/osrm-text-instructions/-/osrm-text-instructions-0.13.3.tgz#67a8d278a8e99bcd1bcd6b05cb7a2da85488fa69"
 

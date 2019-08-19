@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Map, TileLayer } from "react-leaflet";
+import L from "leaflet";
 import Routing from "./RoutingMachine";
 
 export default class LeafletMap extends Component {
@@ -7,27 +8,50 @@ export default class LeafletMap extends Component {
     lat: 10.7979794,
     lng: 106.6538054,
     zoom: 11,
-    isMapInit: false
+    isMapInit: false,
+    from: "10.7979794, 106.6538054",
+    to: "10.831332788572645, 106.7638224363"
   };
   saveMap = map => {
     this.map = map;
     this.setState({
-      isMapInit: true
+      isMapInit: true,
     });
   };
-
+  handleChange = ({ target }) => {
+    // console.log('event', target, target.name, target.value)
+    this.setState({[target.name]: target.value});
+  }
+  getLatLng = (s) => {
+    const result = s.split(',');
+    return result
+  }
   render() {
     const position = [this.state.lat, this.state.lng];
+    const from = this.getLatLng(this.state.from);
+    const to = this.getLatLng(this.state.to)
+    const waypoints = [L.latLng(from), L.latLng(to)]
     return (
+      <div>
+        <form>
+        <label>
+          from:
+          <input type="text" name="from" onChange={this.handleChange} />
+        </label>
+        <br />
+        <label>
+          to:
+          <input type="text" name="to" onChange={this.handleChange} />
+        </label>
+        </form>
       <Map center={position} zoom={this.state.zoom} ref={this.saveMap}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          // url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-          // url="http://localhost:6789/openstreetmap-carto/tile/{z}/{x}/{y}.png"
           url="http://kb-openst.danghung.xyz:6789/openstreetmap-carto/tile/{z}/{x}/{y}.png"
         />
-        {this.state.isMapInit && <Routing map={this.map} />}
+        {this.state.isMapInit && <Routing map={this.map} waypoints={waypoints} />}
       </Map>
+      </div>
     );
   }
 }

@@ -5,6 +5,7 @@ import L from "leaflet";
 import Routing from "./RoutingMachine";
 import './index.css'
 import "./contextmenu.css"
+const polyline   = require('@mapbox/polyline')
 
 export default class LeafletMap extends Component {
   state = {
@@ -15,7 +16,18 @@ export default class LeafletMap extends Component {
     from: "10.7979794, 106.6538054",
     to: "10.831332788572645, 106.7638224363",
     waypoints: [],
+    simulateRoute: [],
   };
+  _decodePolyline = (routeGeometry) => {
+    var cs = polyline.decode(routeGeometry, 5),
+        result = new Array(cs.length),
+        i;
+    for (i = cs.length - 1; i >= 0; i--) {
+        result[i] = L.latLng(cs[i]);
+    }
+
+    return result;
+  }
   saveMap = map => {
     this.map = map;
     this.setState({
@@ -35,6 +47,8 @@ export default class LeafletMap extends Component {
     this.setState({})
   }
   render() {
+    const route = this._decodePolyline("m~{`Amx}iS_EOaFOuFQDeABq@Bc@NyDL}CFoABo@D_BBcAHeCv@oXPmF\\gIBWPkEBk@?MDq@Do@FkAJ{@?QDkA?MDs@BeABe@FsADqA@GLcDDgABc@Bg@@YBa@DoADy@@[B{@DeAJqCDaA@M@c@DuAHeC?I?GDu@F}ABc@FiBNwC@_@DaANqF?OKa@GYOWwAuAmAkAsByBACwAyAuB{BsAwAUS}DcEs@m@MQi@u@O]I]AECYAe@Bs@?KRcCBa@D{@B[@SDm@Di@HmAJ{AJcBDg@Di@H{AHiAFkAXsDDa@HsABa@RyCZoENsBPiCJsAJ{ABSDeA@QD{@B]D{@@e@Ea@Oi@Oe@_@iAk@cBIYIYg@cBKc@u@{BGU]cAC_@r@kEHm@@ELqAFg@B}@@E@_@JeD@QHyBDkA@a@FyBFwA@YBw@?S@YDgADiABg@JiCBiAJ_DN_DxAFXBdAD^HDHFFFDJBL?J?HCHGFGFK@M?OCMGKII@_@?e@B}B@g@Ck@V{C?_@H]t@yDd@kBd@{Al@}AZcArBcFpCyFZSb@y@HWz@gCXcAPcAD]JQ@W@YAm@Ee@CaAGeAg@cFo@}FoAiKMkAGs@mA}Le@yEg@uE?a@EYO}@a@}BGc@Ic@Q[QcBqA_MaAiIe@uE}A_Oe@yESqBOuAGe@Gi@IcAA_A?gADiA@a@F_@A_@C]Gm@U[Q]]y@Y_AA[QaAUwAKSQeAa@eCe@iBo@sBwAiDGi@e@cAa@[k@_A_B_C}@eAoAqA_A{@cBqAy@o@Yc@}@k@c@GmDyAg@SsC}@qA]qA[aAQ{AS}BUyEe@oGs@oEk@qDa@eFm@oCe@YAoDm@eDWkGk@{AW}Do@y@MmCw@wBu@i@SWSUQGWUOeAe@sAm@aAg@cAg@eBw@mM{FaH}COGqCqAw@_@")
+    console.log('route', route)
     const position = [this.state.lat, this.state.lng];
     const from = this.getLatLng(this.state.from);
     const to = this.getLatLng(this.state.to)

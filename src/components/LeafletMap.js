@@ -23,20 +23,11 @@ export default class LeafletMap extends Component {
     });
   };
   handleChange = ({ target }) => {
-    this.setState({[target.name]: target.value});
+    this.setState({[target.name]: target.value, waypoints: []});
   }
   getLatLng = (s) => {
     const result = s.split(',');
     return result
-  }
-  handleContextMenu = (e) => {
-    // var popup = L.popup().setContent('<p>Hello world!<br />This is a nice popup.</p>'); 
-    // popup.openOn(this.map)
-    if (this.popup) this.popup.removeFrom(this.map.leafletElement)
-    this.popup = L.popup()
-      .setLatLng(e.latlng)
-      .setContent('<input type="button">Add waypoint here</input>')
-    this.popup.addTo(this.map.leafletElement)
   }
   addWaypoints = (e) => {
     const waypoint = L.latLng(e.latlng.lat, e.latlng.lng);
@@ -62,8 +53,15 @@ export default class LeafletMap extends Component {
           <br/>
           <input className="to" placeholder="To" type="text" name="to" onChange={this.handleChange} />
         </div>
-      <Map center={position} zoom={this.state.zoom} ref={this.saveMap} contextmenu= {true} contextmenuWidth={ 130} 
-        contextmenuItems={ [{text: 'Add waypoints', callback: this.addWaypoints}]}>
+      <Map 
+        center={position} 
+        zoom={this.state.zoom}
+        ref={this.saveMap}
+        contextmenu= {true} contextmenuWidth={130} 
+        contextmenuItems={ [{text: 'Add waypoints', callback: this.addWaypoints}]}
+        bounds={waypoints} // fitBounds
+        boundsOptions={{padding: [10, 10]}} // fitBounds with padding
+      >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="http://kb-openst.danghung.xyz:6789/openstreetmap-carto/tile/{z}/{x}/{y}.png"

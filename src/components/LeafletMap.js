@@ -40,10 +40,10 @@ export default class LeafletMap extends Component {
           <br/>
           <input className="to" placeholder="To" type="text" name="to" onChange={this.handleChange} />
         </div>
-      <Map center={position} zoom={this.state.zoom} ref={this.saveMap}>
+      <Map center={position} maxZoom={17} zoom={this.state.zoom} ref={this.saveMap}>
         <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="http://kb-openst.danghung.xyz:6789/openstreetmap-carto/tile/{z}/{x}/{y}.png"
+          attribution='&amp;copy <a href="https://bid.danghung.xyz">Smartlog</a> contributors'
+          url="http://osm-tiles.danghung.xyz/tile/{z}/{x}/{y}.png"
         />
         {routing}
       </Map>
